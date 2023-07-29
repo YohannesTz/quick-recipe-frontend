@@ -43,7 +43,7 @@ const PostPage = () => {
                     </div>
                 </CustomDialog>
             )}
-            {isLoggedIn ? (
+            {!isLoggedIn ? (
                 <div>
                     <p className="text-4xl sm:text-3xl py-5">
                         Oops!

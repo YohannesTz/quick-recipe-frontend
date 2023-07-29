@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div className="bg-gray-900 text-white">
 			<NavbarComponent />
-			<div className="flex flex-col h-screen mt-10 bg-gray-900 ">
+			<div className="flex-col h-screen mt-10 bg-gray-900 ">
 				<Outlet />
 			</div>
 		</div>
