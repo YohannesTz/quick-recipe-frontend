@@ -15,6 +15,7 @@ const style_two = {
     width: 400,
 };
 
+
 const HomePage = () => {
     return (
         <div className="justify-center md:px-5 lg:px-16 bg-gray-900">
@@ -32,7 +33,7 @@ const HomePage = () => {
                     <div className="flex flex-row my-6">
                         <div>
                             <wired-button elevation="2">
-                                <a href="/recipies">Get started</a>
+                                <a href="/recipies">Recipies</a>
                             </wired-button>
                         </div>
                     </div>
@@ -47,12 +48,12 @@ const HomePage = () => {
             </div>
 
             <div>
-                <div className=" py-20">
+                <div className="py-20">
                     <p className="text-4xl sm:text-3xl text-center text-gray-300 py-5">
                         Why Us?
                     </p>
                     <div className="grid lg:grid-cols-3 gap-2 bg-gray-900">
-                        <wired-card elevation="3" className="px-5 py-6">
+                        <wired-card elevation="3" className="px-5 py-6" fill="white">
                             <span className="font-bold text-xl mx-2">Curated</span>
 
                             <p className="m-2 text-justify">
