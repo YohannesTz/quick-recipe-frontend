@@ -53,7 +53,7 @@ const HomePage = () => {
                         Why Us?
                     </p>
                     <div className="grid lg:grid-cols-3 gap-2 bg-gray-900">
-                        <wired-card elevation="3" className="px-5 py-6" fill="white">
+                        <wired-card elevation="3" className="px-5 py-6">
                             <span className="font-bold text-xl mx-2">Curated</span>
 
                             <p className="m-2 text-justify">

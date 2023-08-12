@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { useFormik } from 'formik';
 import * as yup from "yup";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
 import { BASE_URL } from '../util/util';
+import { WiredButton } from 'wired-elements/lib/wired-button.js';
+import { WiredInput } from 'wired-elements/lib/wired-input.js';
 
 const validationSchema = yup.object({
     email: yup
@@ -25,7 +27,7 @@ const validationSchema = yup.object({
 });
 
 const SignUpPage = () => {
-    const [result, setResult] = useState({});
+    const [result, setResult] = useState(null);
     const [status, setStatus] = useState("idle");
     const navigate = useNavigate();
 
@@ -41,6 +43,7 @@ const SignUpPage = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
+            console.log("values");
             console.log(values);
             setStatus("loading");
 
@@ -58,8 +61,8 @@ const SignUpPage = () => {
         }
     });
 
-    const handleChange = (e) => {
-        console.log(e.value);
+    const handleInputChange = (e) => {
+        console.log(e.target.value);
     }
 
     return (
@@ -68,26 +71,30 @@ const SignUpPage = () => {
                 <div className="flex flex-row justify-center font-bold text-lg">
                     <p>SignUp here.</p>
                 </div>
+                <div className="flex flex-row justify-center font-bold text-lg">
+                    <WiredButton onClick={() => console.log("clickedthebttn")}></WiredButton>
+                </div>
                 <div className="flex flex-row py-2 justify-center">
-                    <wired-input class="md:w-2/4 justify-center lg:w-1/4 w-3/4" placeholder="Enter email" value={formik.values.email} onChange={handleChange}></wired-input>
+                    <wired-input name="email" class="md:w-2/4 justify-center lg:w-1/4 w-3/4" placeholder="Enter email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}></wired-input>
                 </div>
                 {formik.errors.email}
                 <div className="flex flex-row py-2 justify-center">
-                    <wired-input class="md:w-2/4 justify-center lg:w-1/4 w-3/4" type="password" placeholder="Enter password" value={formik.values.password} onChange={formik.handleChange}></wired-input>
+                    <wired-input name="password" class="md:w-2/4 justify-center lg:w-1/4 w-3/4" type="password" placeholder="Enter password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}></wired-input>
                 </div>
                 {formik.errors.password}
                 <div className="flex flex-row py-2 justify-center">
-                    <wired-input class="md:w-2/4 justify-center lg:w-1/4 w-3/4" placeholder="Enter displayName" value={formik.values.displayName} onChange={formik.handleChange}></wired-input>
+                    <wired-input name="displayName" class="md:w-2/4 justify-center lg:w-1/4 w-3/4" placeholder="Enter displayName" value={formik.values.displayName} onChange={formik.handleChange} onBlur={formik.handleBlur}></wired-input>
                 </div>
                 {formik.errors.displayName}
                 <div className="flex flex-row py-2 justify-center">
-                    <wired-input class="md:w-2/4 justify-center lg:w-1/4 w-3/4" placeholder="Enter photourl" value={formik.values.photoUrl} onChange={formik.handleChange}></wired-input>
+                    <wired-input name="photoUrl" class="md:w-2/4 justify-center lg:w-1/4 w-3/4" placeholder="Enter photourl" value={formik.values.photoUrl} onChange={formik.handleChange} onBlur={formik.handleBlur}></wired-input>
                 </div>
-                {formik.errors.photoUrl}
-                {console.log(formik.values)}
+                {formik.errors.displayName}
                 <div className="flex flex-row justify-center">
-                    <wired-button onClick={formik.handleSubmit}  disabled={Object.keys(formik.errors).length === 0}>SignUp</wired-button>
+                    <wired-button onClick={formik.handleSubmit} >SignUp</wired-button>
                 </div>
+                {console.log(formik.errors)}
+                {console.log(formik.values)}
                 <div className="flex flex-row text-center justify-center my-5">
                     already have an account?<wired-link href="/signIn">Sign in here</wired-link>.
                 </div>
